@@ -1,0 +1,62 @@
+:root {
+  --vp-c-brand-1: #fc009b;
+  --vp-c-brand-2: #db8f00;
+}
+
+.dark {
+  --vp-c-brand-1: #ff3db5;
+  --vp-c-brand-2: #ffa600;
+}
+
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(-60deg, var(--vp-c-brand-2) 10%, var(--vp-c-brand-1));
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, var(--vp-c-brand-2) 10%, var(--vp-c-brand-1));
+  --vp-home-hero-image-filter: blur(44px);  
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(68px);
+  }
+}
+
+.VPHero .VPImage {
+  opacity: 0.7;
+  padding: 18px;
+}
+
+.VPHero .text {
+  font-size: 2.5rem;
+  line-height: 1.5;
+  padding: 10px 0;
+}
+.VPHero .tagline {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+a.VPFeature {
+  border: 1px solid transparent !important;
+  background:
+    linear-gradient(var(--vp-c-bg-soft), var(--vp-c-bg-soft)) padding-box,
+    linear-gradient(-60deg, 
+      color-mix(in srgb, var(--vp-c-brand-2) 50%, transparent) 10%,
+      color-mix(in srgb, var(--vp-c-brand-1) 50%, transparent)
+    ) border-box !important;
+}
+
+a.VPFeature:hover {
+  
+  background:
+    linear-gradient(var(--vp-c-bg-soft), var(--vp-c-bg-soft)) padding-box,
+    linear-gradient(-60deg, var(--vp-c-brand-2) 10%, var(--vp-c-brand-1)) border-box !important;
+}

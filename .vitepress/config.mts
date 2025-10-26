@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Voxrame",
   description: "Game Agnostic Tools For Developing Mods and Games for Luanti Engine.",
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -24,5 +25,13 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Voxrame' }
     ]
-  }
+  },
+
+  rewrites: {
+    'en/:rest*': ':rest*'
+  },
+  locales: {
+    root: { label: 'English', lang: 'en-US', },
+    ru:   { label: 'Русский', lang: 'ru-RU', },
+  },
 })
