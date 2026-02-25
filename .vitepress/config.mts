@@ -2,8 +2,16 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  vite: {
+    ssr: {
+      noExternal: ['@nolebase/vitepress-plugin-highlight-targeted-heading']
+    }
+  },
+
   title: "Voxrame",
   description: "Game Agnostic Tools For Developing Mods and Games for Luanti Engine.",
+
+  appearance: 'dark',
 
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
