@@ -1,3 +1,5 @@
+@import './code-blocks.css';
+
 :root {
   --vp-c-brand-1: #fc009b;
   --vp-c-brand-2: #db8f00;
@@ -6,7 +8,10 @@
 .dark {
   --vp-c-brand-1: #ff3db5;
   --vp-c-brand-2: #ffa600;
+
+  --vp-c-border: #6b194c;
 }
+
 
 :root {
   --vp-home-hero-name-color: transparent;
@@ -53,9 +58,7 @@ a.VPFeature {
       color-mix(in srgb, var(--vp-c-brand-1) 50%, transparent)
     ) border-box !important;
 }
-
 a.VPFeature:hover {
-  
   background:
     linear-gradient(var(--vp-c-bg-soft), var(--vp-c-bg-soft)) padding-box,
     linear-gradient(-60deg, var(--vp-c-brand-2) 10%, var(--vp-c-brand-1)) border-box !important;

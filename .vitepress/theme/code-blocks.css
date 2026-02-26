@@ -1,0 +1,27 @@
+
+:root {
+  --vp-code-copy-code-hover-border-color: var(--vp-c-border);
+  --vp-code-copy-code-active-text: var(--vp-c-brand-1);
+}
+
+.vp-doc div[class*="language-"] {
+  border-radius: 4px;
+
+  border: 1px solid transparent !important;
+  background:
+    linear-gradient(var(--vp-c-bg-alt), var(--vp-c-bg-alt)) padding-box,
+    linear-gradient(-60deg,
+      color-mix(in srgb, var(--vp-c-brand-2) 1%, transparent) 10%,
+      color-mix(in srgb, var(--vp-c-brand-1) 1%, transparent)
+    ) border-box !important;
+}
+
+.vp-doc div[class*="language-"]:hover {
+  border: 1px solid transparent !important;
+  background:
+    linear-gradient(var(--vp-c-bg-alt) 80%, var(--vp-c-bg)) padding-box,
+    linear-gradient(-60deg,
+      color-mix(in srgb, var(--vp-c-brand-2) 30%, transparent) 10%,
+      color-mix(in srgb, var(--vp-c-brand-1) 30%, transparent)
+    ) border-box !important;
+}
