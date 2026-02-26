@@ -8,6 +8,7 @@ export default defineConfig({
     }
   },
 
+  head: [['link', { rel: 'icon', href: '/favicon.png' }]],
   title: "Voxrame",
   description: "Game Agnostic Tools For Developing Mods and Games for Luanti Engine.",
 
