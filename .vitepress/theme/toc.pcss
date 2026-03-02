@@ -1,0 +1,37 @@
+/* Мини-оглавления (Table of Contents) */
+
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 2rem;
+}
+
+.toc-grid.toc-main {
+  font-size: 1.2em;
+}
+
+.toc-grid .toc-column ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.toc-grid:not(.toc-main) .toc-column ul li a {
+  text-decoration-color: color-mix(in srgb, var(--vp-c-brand-1) 60%, transparent);
+
+  &:hover {
+    color: var(--vp-c-brand-1);
+    background-clip: text;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--vp-c-brand-2) 80%, transparent);
+    code {
+      color: inherit;
+    }
+  }
+}
+
+.toc-grid:not(.toc-main) .toc-column ul {
+  margin: 0;
+}
+.toc-grid:not(.toc-main) .toc-column ul li {
+  margin: 0;
+}

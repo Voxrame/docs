@@ -4,6 +4,10 @@
   --vp-code-copy-code-active-text: var(--vp-c-brand-1);
 }
 
+h3 code {
+  color: var(--vp-c-brand-1);
+}
+
 .vp-doc div[class*="language-"] {
   border-radius: 4px;
 
@@ -14,6 +18,10 @@
       color-mix(in srgb, var(--vp-c-brand-2) 1%, transparent) 10%,
       color-mix(in srgb, var(--vp-c-brand-1) 1%, transparent)
     ) border-box !important;
+
+  code {
+    border: none !important;
+  }
 }
 
 .vp-doc div[class*="language-"]:hover {
