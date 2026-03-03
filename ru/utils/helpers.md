@@ -746,3 +746,88 @@ local table2 = { b = 5, c = 10, d = 2 }
 local result = table.div_values(table1, table2)
 print(dump(result))  -- { a = 10, b = 4, c = 3, d = 0.5 }
 ```
+
+
+
+## Math
+
+<div class="toc-grid">
+<div class="toc-column">
+
+- [`math.limit`/`clamp()`](#math-limit-clamp-value-min-max)
+- [`math.is_within()`](#math-is_within-value-min-max)
+- [`math.is_among()`](#math-is_among-value-min-max)
+
+</div>
+<div class="toc-column">
+
+- [`math.is_near()`](#math-is_near-value-near-gap)
+- [`math.quadratic_equation_roots()`](#math-quadratic_equation_roots-a-b-c)
+- [`math.point_on_circle()`](#math-point_on_circle-radius-angle)
+
+</div>
+</div>
+
+### `math` `.limit`/`.clamp(value, min, max)`
+
+Ограничивает значение в указанном диапазоне.  
+Альтернативное название: `math.clamp()`.
+
+```lua
+local health = 150
+local max_health = 100
+local clamped_health = math.limit(health, 0, max_health)
+print(clamped_health)  -- 100
+```
+
+### `math.is_within(value, min, max)`
+
+Проверяет, что значение строго внутри диапазона (`min < value < max`).
+
+```lua
+print(math.is_within(5, 1, 10))   -- true
+print(math.is_within(1, 1, 10))   -- false (границы не включены)
+print(math.is_within(10, 1, 10))  -- false
+```
+
+### `math.is_among(value, min, max)`
+
+Проверяет, что значение внутри диапазона, включая границы (`min <= value <= max`).
+
+```lua
+print(math.is_among(5, 1, 10))   -- true
+print(math.is_among(1, 1, 10))   -- true
+print(math.is_among(10, 1, 10))  -- true
+```
+
+### `math.is_near(value, near, gap?)`
+
+Проверяет, что значение близко к указанному (`|value - near| <= gap`).
+
+```lua
+print(math.is_near(10, 12))        -- false (gap = 1 по умолчанию)
+print(math.is_near(11, 12))        -- true
+print(math.is_near(10, 12, 3))     -- true (gap = 3)
+```
+
+### `math.quadratic_equation_roots(a, b, c)`
+
+Решает квадратное уравнение вида `y = a*x^2 + b*x + c`.
+
+```lua
+local root1, root2 = math.quadratic_equation_roots(1, -5, 6)
+print(root1, root2)  -- 3, 2
+
+-- Нет действительных корней
+local r1, r2 = math.quadratic_equation_roots(1, 0, 1)
+print(r1, r2)  -- nil, nil
+```
+
+### `math.point_on_circle(radius, angle)`
+
+Вычисляет точку на окружности.
+
+```lua
+local x, z = math.point_on_circle(5, math.pi/4)
+print(x, z)  -- координаты точки на окружности радиусом 5 под углом 45°
+```
