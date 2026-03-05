@@ -757,11 +757,12 @@ print(dump(result))  -- { a = 10, b = 4, c = 3, d = 0.5 }
 - [`math.limit`/`clamp()`](#math-limit-clamp-value-min-max)
 - [`math.is_within()`](#math-is_within-value-min-max)
 - [`math.is_among()`](#math-is_among-value-min-max)
+- [`math.is_in_range()`](#math-is_in_range-value-min-max)
+- [`math.is_near()`](#math-is_near-value-near-gap)
 
 </div>
 <div class="toc-column">
 
-- [`math.is_near()`](#math-is_near-value-near-gap)
 - [`math.quadratic_equation_roots()`](#math-quadratic_equation_roots-a-b-c)
 - [`math.point_on_circle()`](#math-point_on_circle-radius-angle)
 
@@ -798,6 +799,16 @@ print(math.is_within(10, 1, 10))  -- false
 print(math.is_among(5, 1, 10))   -- true
 print(math.is_among(1, 1, 10))   -- true
 print(math.is_among(10, 1, 10))  -- true
+```
+
+### `math.is_in_range(value, min, max)`
+
+Проверяет, что значение внутри полуоткрытого интервала `(min, max]` (`min < value <= max`).
+
+```lua
+print(math.is_in_range(5, 1, 10))   -- true
+print(math.is_in_range(1, 1, 10))   -- false (равно минимуму)
+print(math.is_in_range(10, 1, 10))  -- true (равно максимуму)
 ```
 
 ### `math.is_near(value, near, gap?)`
