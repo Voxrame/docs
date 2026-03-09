@@ -1028,3 +1028,212 @@ debug.mesure_print('calculation')
 -- output:
 -- Measure of [calculation]: Average time:    42 ms ; Last time:    33 ms ; Count of mesures:     7
 ```
+
+
+
+## Global
+
+<div class="toc-grid">
+<div class="toc-column">
+
+- [`errorf(message, ...)`](#errorf-message)
+- [`errorlf(message, level, ...)`](#errorlf-message-level)
+- [`assertf(condition, message, ...)`](#assertf-condition-message)
+
+</div>
+</div>
+
+### `errorf(message, ...)`
+
+Аналогичен [`error()` в Lua](https://www.lua.org/manual/5.1/manual.html#pdf-error), но `message` может быть строкой-шаблоном с указанными параметрами, аналогично [`string.format()`](https://www.lua.org/manual/5.1/manual.html#pdf-string.format).
+
+```lua
+local player_name = nil
+errorf('Игрок '%s' не найден', player_name)
+-- Ошибка: Игрок 'nil' не найден
+```
+
+<small style="color: var(--vp-c-text-2)">output (при включенном `debug`):</small>
+
+```ansi
+[93m@ [0m[33mmods/lord/Core/map/src/map/Corridor.lua[0m[97m:[0m[32m9[0m
+[32m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[0m
+[1m[91mERROR:[0m
+[91m  Игрок `nil` не найден[0m
+
+[1m[91mStack trace:[0m
+[3m[2m   1   [0m[93m@[0m [C][36m: in error[0m
+[3m[2m   2   [0m[93m@ [0m[33mmods/lord/Core/helpers/src/lua_ext/global.lua[0m[97m:[0m[32m9[0m[36m: in errorf[0m
+[3m[2m   3   [0m[93m@ [0m[33mmods/lord/Core/map/src/map/Corridor.lua[0m[97m:[0m[32m12[0m[36m: in main[0m
+[3m[2m   4   [0m[93m@[0m [C][36m: in dofile[0m
+[3m[2m   5   [0m[93m@ [0m[33mmods/lord/Core/builtin_ext/src/mod/require.lua[0m[97m:[0m[32m29[0m[36m: in require[0m
+[3m[2m   6   [0m[93m@ [0m[33mmods/lord/Core/map/src/map.lua[0m[97m:[0m[32m9[0m[36m: in main[0m
+[3m[2m   7   [0m[93m@[0m [C][36m: in dofile[0m
+[3m[2m   8   [0m[93m@ [0m[33mmods/lord/Core/builtin_ext/src/mod/require.lua[0m[97m:[0m[32m29[0m[36m: in require[0m
+[3m[2m   9   [0m[93m@ [0m[33mmods/lord/Core/map/init.lua[0m[97m:[0m[32m4[0m[36m: in mod_init_function[0m
+[3m[2m  10   [0m[93m@ [0m[33mmods/lord/Core/builtin_ext/src/mod.lua[0m[97m:[0m[32m80[0m[36m: in mod[0m
+[3m[2m  11   [0m[93m@ [0m[33mmods/lord/Core/map/init.lua[0m[97m:[0m[32m3[0m[36m: in main[0m
+
+[32m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[0m
+```
+
+###### Обработка ошибок в Luanti {#error-handling-warning}
+> [!WARNING]
+> В стек трейсе будет присутствовать лишние строки, т.к. Luanti [не передаёт указанный `level`](https://github.com/luanti-org/luanti/blob/3b67e73bc3402291bd3790dc2b8f3932be1b42b4/src/script/common/c_internal.cpp#L52) в `core.error_handler()`.
+
+### `errorlf(message, level, ...)`
+
+Как и в [`errorf()`](#errorf-message) вы можете передать строку-формат и параметры, а также указать уровень трассировки.
+
+```lua
+errorlf('Ошибка в данных', 3, 'значение: %d', 42)
+-- Ошибка с трассировкой на 3 уровня вверх
+```
+см. [обработка ошибок в Luanti](#error-handling-warning)
+
+### `assertf(condition, message, ...)`
+
+Аналогичен [`assert()` в Lua](https://www.lua.org/manual/5.1/manual.html#pdf-assert), но в качестве `message` можно указать строку-формат с параметрами, аналогично [`string.format()`](https://www.lua.org/manual/5.1/manual.html#5.4.1).  
+> Вызывает `errorf()` если условие `condition` не выполнено.
+
+```lua
+-- Продолжает выполнение если player существует, иначе ошибка
+local player = nil
+assertf(player, 'Игрок `%s` не найден', player)
+```
+
+
+
+## IO
+
+<div class="toc-grid">
+<div class="toc-column">
+
+- [`io.file_exists()`](#io-file_exists-name)
+- [`io.dirname()`](#io-dirname-path)
+
+</div>
+<div class="toc-column">
+
+- [`io.write_to_file()`](#io-write_to_file-filepath-content-mode)
+- [`io.read_from_file()`](#io-read_from_file-filepath-mode)
+- [`io.get_file_error()`](#io-get_file_error)
+
+</div>
+</div>
+
+### `io.file_exists(name)`
+
+Проверяет существование файла.
+
+```lua
+if io.file_exists('config.txt') then
+    print('Файл конфигурации найден')
+else
+    print('Файл конфигурации отсутствует')
+end
+```
+
+### `io.dirname(path)`
+
+Возвращает директорию из пути.
+
+```lua
+print(io.dirname('/home/user/project/file.txt'))  -- '/home/user/project'
+print(io.dirname('relative/path/file.txt'))       -- 'relative/path'
+print(io.dirname('file.txt'))                     -- '.'
+```
+
+### `io.write_to_file(filepath, content, mode?)`
+
+Записывает содержимое в файл.
+
+```lua
+local success, error_code, error_message = io.write_to_file('data.txt', 'Hello, World!')
+
+if success then
+    print('Данные успешно записаны')
+else
+    print('Ошибка записи:', error_code, error_message)
+end
+
+-- Дозапись в конец файла
+io.write_to_file('log.txt', 'Новая запись\n', 'a')
+```
+
+### `io.read_from_file(filepath, mode?)`
+
+Читает всё содержимое из файла.  
+Возвращает строку с содержимым файла в случае успеха или `false, error_code, error_message` в случае ошибки.
+
+```lua
+local content = io.read_from_file('config.json')
+if content then
+    print('Содержимое файла:', content)
+else
+    print('Ошибка чтения файла')
+end
+```
+Обработка ошибок
+```lua
+local success, error_code, error_message = io.read_from_file('nonexistent.txt')
+if not success then
+    print('Ошибка:', error_code, error_message)
+end
+-- Ошибка: 2       nonexistent.txt: No such file or directory
+```
+<small>или:</small>
+
+```lua
+local success = io.read_from_file('nonexistent.txt')
+if not success then
+    local error_code, error_message = io.get_file_error()
+    print('Ошибка:', error_code, error_message)
+end
+-- Ошибка: 2       nonexistent.txt: No such file or directory
+```
+Чтение в бинарном режиме
+```lua
+local binary_content = io.read_from_file('image.png', 'rb')
+if binary_content then
+    print('Размер файла:', #binary_content, 'байт')
+end
+```
+
+### `io.get_file_error()`
+
+Возвращает код и сообщение последней ошибки из функций `io.read_from_file()` или `io.write_to_file()`.
+
+```lua
+local success = io.read_from_file('nonexistent.txt')
+if not success then
+    local error_code, error_message = io.get_file_error()
+    print('Ошибка:', error_code, error_message)
+end
+-- Вывод: Ошибка: 2       nonexistent.txt: No such file or directory
+```
+```lua
+local success = io.write_to_file('/readonly/file.txt', 'data')
+if not success then
+    local error_code, error_message = io.get_file_error()
+    print('Ошибка записи:', error_code, error_message)
+end
+-- Вывод: Ошибка записи: 13       /readonly/file.txt: Permission denied
+```
+
+
+
+## OS
+
+### `os.DIRECTORY_SEPARATOR`
+
+Разделитель директорий для текущей ОС.
+
+```lua
+local DS = os.DIRECTORY_SEPARATOR
+
+print(DS)  -- '/' на Linux/Mac, '\' на Windows
+print('folder' .. DS .. 'file.txt')
+-- на Linux/Mac: 'folder/file.txt'
+-- на Windows:   'folder\file.txt'
+```
