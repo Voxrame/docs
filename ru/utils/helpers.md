@@ -842,3 +842,189 @@ print(r1, r2)  -- nil, nil
 local x, z = math.point_on_circle(5, math.pi/4)
 print(x, z)  -- координаты точки на окружности радиусом 5 под углом 45°
 ```
+
+
+
+## Debug
+
+<div class="toc-grid">
+<div class="toc-column">
+
+- [`__FILE__()`](#__file__-depth-full)
+- [`__LINE__()`](#__line__-depth)
+- [`__FILE_LINE__()`](#__file_line__-depth-full)
+- [`__DIR__()`](#__dir__-depth)
+- [`__FUNC__()`](#__func__-depth)
+
+</div>
+<div class="toc-column">
+
+- [`print_dump()`](#print_dump-depth-with_trace) / [`pd()`](#pd) / [`pdt()`](#pdt)
+- [`debug.measure()`](#debug-measure-name-callback-print_result)
+- [`debug.mesure_print()`](#debug-mesure_print-name)
+
+</div>
+</div>
+
+### `__FILE__(depth?, full?)`
+Возвращает имя текущего файла или файла вызывающей функции в зависимости от глубины стека.
+- `depth?` - глубина стека вызовов (по умолчанию `0`)
+- `full?` - показывать полный путь (по умолчанию `false`)
+```lua
+-- Получить относительный путь файла
+print(__FILE__())  -- 'mods/Voxrame/helpers/src/lua_ext/debug.lua'
+
+-- Получить полный путь файла
+print(__FILE__(0, true))  -- '/home/alek13/projects/my-game/mods/Voxrame/helpers/src/lua_ext/debug.lua'
+
+-- Получить файл на 2 уровня вверх по стеку вызовов
+print(__FILE__(2))  -- файл функции, которая вызвала вызывающую функцию
+```
+
+### `__LINE__(depth?)`
+Возвращает номер текущей строки или строки вызывающей функции в зависимости от глубины стека.
+```lua
+print(__LINE__())  -- 57
+
+-- Получить номер строки вызывающей функции
+print(__LINE__(1))  -- номер строки в файле вызова
+```
+
+### `__FILE_LINE__(depth?, full?)`
+
+Возвращает файл и строку в формате "относительный/путь/к/файлу:строка".
+
+```lua
+print(__FILE_LINE__())  -- 'mods/Voxrame/helpers/src/lua_ext/debug.lua:65'
+
+-- С полным путем
+print(__FILE_LINE__(0, true))  -- '/home/alek13/projects/my-game/mods/Voxrame/helpers/src/lua_ext/debug.lua:65'
+```
+
+### `__DIR__(depth?)`
+
+Возвращает директорию текущего файла или директорию файла вызывающей функции в зависимости от глубины стека.
+
+```lua
+print(__DIR__())  -- 'mods/Voxrame/helpers/src/lua_ext/'
+```
+
+### `__FUNC__(depth?)`
+
+Возвращает имя текущей функции.
+
+```lua
+function my_function()
+    print(__FUNC__())  -- 'my_function'
+end
+```
+
+### `print_dump(depth, with_trace, ...)`
+
+Выводит сожержимое всех переданных параметров `...`.  
+Перед выводом добавляет имя файла и строку `@ <file>:<line>`.
+
+Если `with_trace` равно `true`, дополнительно выводит трассировку стека.
+
+> [!NOTE]
+> Если ваш [терминал поддерживает ссылки](https://github.com/Alhadis/OSC8-Adoption), каждая `@ <file>:<line>` будет привязана к открытию IDE, смотрите `readme.md` для настройки.
+
+> [!TIP]
+> Используйте `pd()` и `pdt()` для более краткого синтаксиса. См. примеры ниже.
+
+
+### `pd(...)`
+
+Сокращение от `print_dump`. Вызывает `print_dump` с `with_trace == false`.
+
+```lua
+local player_name = 'test_player'
+local position = { x = 10, y = 20, z = 30 }
+
+pd(player_name, position)
+```
+<small style="color: var(--vp-c-text-2)">output:</small>
+```ansi
+[93m@ [0m[33mmods/lord/Core/map/src/map/Corridor.lua[0m[97m:[0m[32m14[0m
+[36mplayer_name:[0m "test_player"
+[36m   position:[0m {
+    x = 10,
+    y = 20,
+    z = 30,
+}
+```
+
+### `pdt(...)`
+
+Сокращение от `print_dump traced`. Вызывает `print_dump` с `with_trace == true`.
+
+```lua
+local player_name = 'test_player'
+local position = { x = 10, y = 20, z = 30 }
+
+pdt(player_name, position)
+```
+<small style="color: var(--vp-c-text-2)">output:</small>
+```ansi
+[93m@ [0m[33mmods/lord/Core/map/src/map/Corridor.lua[0m[97m:[0m[32m14[0m
+[3m[2m   1   [0m[93m@[0m [C][36m: in dofile[0m
+[3m[2m   2   [0m[93m@ [0m[33mmods/lord/Core/builtin_ext/src/mod/require.lua[0m[97m:[0m[32m29[0m[36m: in require[0m
+[3m[2m   3   [0m[93m@ [0m[33mmods/lord/Core/map/src/map.lua[0m[97m:[0m[32m9[0m[36m: in main[0m
+[3m[2m   4   [0m[93m@[0m [C][36m: in dofile[0m
+[3m[2m   5   [0m[93m@ [0m[33mmods/lord/Core/builtin_ext/src/mod/require.lua[0m[97m:[0m[32m29[0m[36m: in require[0m
+[3m[2m   6   [0m[93m@ [0m[33mmods/lord/Core/map/init.lua[0m[97m:[0m[32m4[0m[36m: in mod_init_function[0m
+[3m[2m   7   [0m[93m@ [0m[33mmods/lord/Core/builtin_ext/src/mod.lua[0m[97m:[0m[32m80[0m[36m: in mod[0m
+[3m[2m   8   [0m[93m@ [0m[33mmods/lord/Core/map/init.lua[0m[97m:[0m[32m3[0m[36m: in main[0m
+[36mplayer_name:[0m "test_player"
+[36m   position:[0m {
+    x = 10,
+    y = 20,
+    z = 30,
+}
+```
+
+### `debug.measure(name, callback, print_result?)`
+
+Измеряет время выполнения функции.
+
+```lua
+local function heavy_calculation()
+    local sum = 0
+    for i = 1, 2000000 do
+        sum = sum + math.random(1, 100) + math.sin(i)
+    end
+end
+
+-- Измерить с выводом результата
+debug.measure('calculation', heavy_calculation, true)
+debug.measure('calculation', heavy_calculation, true)
+debug.measure('calculation', heavy_calculation, true)
+debug.measure('calculation', heavy_calculation, true)
+debug.measure('calculation', heavy_calculation, true)
+-- output:
+-- Measure of [calculation]:  Time:    42 ms ;  Average:    42 ms
+-- Measure of [calculation]:  Time:    58 ms ;  Average:    50 ms
+-- Measure of [calculation]:  Time:    58 ms ;  Average:    53 ms
+-- Measure of [calculation]:  Time:    35 ms ;  Average:    48 ms
+-- Measure of [calculation]:  Time:    33 ms ;  Average:    45 ms
+
+
+-- Измерить без вывода
+local time, avg, count = debug.measure('calculation', heavy_calculation)
+print(time, avg, count)
+local time, avg, count = debug.measure('calculation', heavy_calculation)
+print(time, avg, count)
+-- output:
+-- 33.075  43.170833333333 6
+-- 33.135  41.737142857143 7
+```
+
+### `debug.mesure_print(name)`
+
+Выводит статистику предыдущих измерений `name`, полученных вызовами [`debug.measure(name, ....)`](#debug-measure-name-callback-print-result).
+
+```lua
+debug.mesure_print('calculation')
+-- output:
+-- Measure of [calculation]: Average time:    42 ms ; Last time:    33 ms ; Count of mesures:     7
+```
