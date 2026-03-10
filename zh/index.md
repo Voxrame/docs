@@ -14,5 +14,5 @@ features:
     link: https://github.com/Voxrame/luanti-ide-helper?tab=readme-ov-file#luanti-ide-helper
   - title: Lua Helpers
     details: 用于游戏开发的有用Lua函数集合。
-    link: utils/helpers
+    link: ./utils/helpers
 ---

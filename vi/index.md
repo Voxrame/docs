@@ -14,5 +14,5 @@ features:
     link: https://github.com/Voxrame/luanti-ide-helper?tab=readme-ov-file#luanti-ide-helper
   - title: Lua Helpers
     details: Bộ sưu tập các hàm Lua hữu ích để phát triển game.
-    link: utils/helpers
+    link: ./utils/helpers
 ---
