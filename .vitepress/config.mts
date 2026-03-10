@@ -39,8 +39,20 @@ export default defineConfig({
   rewrites: {
     'en/:rest*': ':rest*'
   },
+
   locales: {
-    root: { label: 'English', lang: 'en-US', },
-    ru:   { label: 'Русский', lang: 'ru-RU', },
+    root: { label: 'English',    lang: 'en-US' },
+    ru:   { label: 'Русский',    lang: 'ru-RU' },
+    de:   { label: 'Deutsch',    lang: 'de-DE' },
+    br:   { label: 'Brasileiro', lang: 'pt-BR' },
+    zh:   { label: '中文',       lang: 'zh-CN' },
+    es:   { label: 'Español',    lang: 'es-ES' },
+    fr:   { label: 'Français',   lang: 'fr-FR' },
+    it:   { label: 'Italiano',   lang: 'it-IT' },
+    pl:   { label: 'Polski',     lang: 'pl-PL' },
+    id:   { label: 'Indonesia',  lang: 'id-ID' },
+    tr:   { label: 'Türkçe',     lang: 'tr-TR' },
+    ar:   { label: 'العربية',       lang: 'ar-SA', dir: 'rtl' },
+    vi:   { label: 'Tiếng Việt', lang: 'vi-VN' },
   },
 })
