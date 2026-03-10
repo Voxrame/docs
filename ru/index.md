@@ -12,4 +12,7 @@ features:
   - title: 🛠️ Luanti IDE Helper
     details: Вспомогательный пакет для разработки модов/игр на Luanti (Minetest), предоставляющий автодополнение и документацию, интегрированную в вашу IDE.
     link: https://github.com/Voxrame/luanti-ide-helper?tab=readme-ov-file#luanti-ide-helper
+  - title: Lua Helpers
+    details: Коллекция полезных Lua функций для разработки игр.
+    link: utils/helpers
 ---
