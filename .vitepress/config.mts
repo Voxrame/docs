@@ -1,5 +1,7 @@
 import { defineConfig } from 'vitepress'
 
+import docs from '../package.json'
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   vite: {
@@ -18,7 +20,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      // { text: 'Examples', link: '/markdown-examples' }
+      { component: 'NavBadge', props: { type: 'tip', text: docs.voxrame.version } }
     ],
 
     sidebar: [
