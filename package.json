@@ -2,6 +2,7 @@
   "voxrame": { "version": "1.0.0-alfa.1" },
   "devDependencies": {
     "@nolebase/vitepress-plugin-highlight-targeted-heading": "^2.18.2",
+    "postcss-rtlcss": "^5.7.1",
     "vitepress": "^2.0.0-alpha.16"
   },
   "scripts": {

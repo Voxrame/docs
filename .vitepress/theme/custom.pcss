@@ -85,3 +85,9 @@ a.VPFeature:hover {
     linear-gradient(var(--vp-c-bg-soft), var(--vp-c-bg-soft)) padding-box,
     linear-gradient(-60deg, var(--vp-c-brand-2) 10%, var(--vp-c-brand-1)) border-box !important;
 }
+
+/* RTL fix for inline code elements */
+:where([dir="rtl"]) code {
+  direction: ltr;
+  unicode-bidi: embed;
+}
