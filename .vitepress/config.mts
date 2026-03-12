@@ -57,4 +57,8 @@ export default defineConfig({
     ar:   { label: 'العربية',       lang: 'ar-SA', dir: 'rtl' },
     vi:   { label: 'Tiếng Việt', lang: 'vi-VN' },
   },
+
+  sitemap: {
+    hostname: 'https://voxrame.dev'
+  }
 })
