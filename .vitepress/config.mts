@@ -23,12 +23,12 @@ export default defineConfig({
       { component: 'NavBadge', props: { type: 'tip', text: docs.voxrame.version } }
     ],
 
+    // Sidebar for other languages is described in their configs (es/config.ts, ru/config.ts, etc.)
     sidebar: [
       {
-        text: 'Examples',
+        text: 'Utilities',
         items: [
-          // { text: 'Markdown Examples', link: '/markdown-examples' },
-          // { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: 'Helpers', link: '/utils/helpers' },
         ]
       }
     ],
