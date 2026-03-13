@@ -35,7 +35,11 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Voxrame' }
-    ]
+    ],
+
+    search: {
+      provider: 'local'
+    },
   },
 
   rewrites: {
