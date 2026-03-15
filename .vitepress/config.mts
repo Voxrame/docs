@@ -19,8 +19,10 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
+      { component: 'VPButton', props: { type: 'secondary', text: '❤️ donate', href: 'https://boosty.to/lord-server' } },
+      { text: ' ', link: '' }, // spacer/divider
       { text: 'Home', link: '/' },
-      { component: 'NavBadge', props: { type: 'tip', text: docs.voxrame.version } }
+      { component: 'NavBadge', props: { type: 'tip', text: docs.voxrame.version } },
     ],
 
     // Sidebar for other languages is described in their configs (es/config.ts, ru/config.ts, etc.)

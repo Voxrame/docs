@@ -1,0 +1,28 @@
+
+.VPNav {
+  .VPButton {
+    color: var(--vp-c-text-1) !important;
+    background-color: var(--vp-c-brand-soft) !important;
+    border-radius: 8px !important;
+    align-self: center;
+  }
+}
+
+/* Mobile fund button */
+.mobile-fund-button {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-fund-button {
+    display: flex !important;
+    align-items: center;
+    margin-right: 12px;
+  }
+  
+  .mobile-fund-button .VPButton {
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
