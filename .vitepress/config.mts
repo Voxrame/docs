@@ -42,6 +42,12 @@ export default defineConfig({
     search: {
       provider: 'local'
     },
+
+    footer: {
+      message: 'Made with ❤️ for the Luanti community',
+      copyright: '© 2026 Lord Team',
+    }
+
   },
 
   rewrites: {

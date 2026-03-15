@@ -2,6 +2,10 @@ import { defineAdditionalConfig } from 'vitepress'
 
 export default defineAdditionalConfig({
   themeConfig: {
+    footer: {
+      message: 'صُنع بـ ❤️ لمجتمع Luanti',
+      copyright: '© 2026 Lord Team',
+    },
     sidebar: [
       {
         text: 'الأدوات',
