@@ -5,6 +5,8 @@ import './custom.pcss'
 import { NolebaseHighlightTargetedHeading } from '@nolebase/vitepress-plugin-highlight-targeted-heading/client'
 import '@nolebase/vitepress-plugin-highlight-targeted-heading/client/style.css'
 
+import { yandexMetrika } from '@hywax/vitepress-yandex-metrika'
+
 import NavBadge from './components/NavBadge.vue'
 import { VPButton } from 'vitepress/theme'
 
@@ -14,6 +16,17 @@ export default {
   enhanceApp({ app }) {
     app.component('NavBadge', NavBadge)
     app.component('VPButton', VPButton)
+  },
+  enhanceApp({ router }) {
+    yandexMetrika(router, {
+      counter: {
+        id: 107714926,
+        initParams: {
+          trackHash: true,
+          clickmap: true,
+        },
+      },
+    })
   },
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
