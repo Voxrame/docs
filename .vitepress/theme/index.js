@@ -13,11 +13,9 @@ import { VPButton } from 'vitepress/theme'
 /** @type {import('vitepress').Theme} */
 export default {
   extends: DefaultTheme,
-  enhanceApp({ app }) {
+  enhanceApp({ app, router }) {
     app.component('NavBadge', NavBadge)
     app.component('VPButton', VPButton)
-  },
-  enhanceApp({ router }) {
     yandexMetrika(router, {
       counter: {
         id: 107714926,
