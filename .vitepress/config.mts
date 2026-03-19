@@ -1,6 +1,7 @@
-import { defineConfig } from 'vitepress'
-
 import docs from '../package.json'
+
+import { defineConfig } from 'vitepress'
+import { withAnsiRender } from './plugins/ansi-renderer'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -17,13 +18,21 @@ export default defineConfig({
 
   appearance: 'dark',
 
+  // https://vitepress.dev/reference/default-theme-config
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
+    // Header:
+    search: {
+      provider: 'local'
+    },
     nav: [
       { component: 'VPButton', props: { type: 'secondary', text: '❤️ donate', href: 'https://boosty.to/lord-server' } },
       { text: ' ', link: '' }, // spacer/divider
       { text: 'Home', link: '/' },
       { component: 'NavBadge', props: { type: 'tip', text: docs.voxrame.version } },
+    ],
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/Voxrame' },
+      { icon: 'discord', link: 'https://discord.gg/voxrame' },
     ],
 
     // Sidebar for other languages is described in their configs (es/config.ts, ru/config.ts, etc.)
@@ -36,20 +45,20 @@ export default defineConfig({
       }
     ],
 
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/Voxrame' }
-    ],
-
-    search: {
-      provider: 'local'
-    },
-
+    // Footer (for other languages in their configs):
     footer: {
       message: 'Made with ❤️ for the Luanti community',
       copyright: '© 2026 Lord Team',
     }
 
   },
+
+  // -- withAnsiRender(): --
+  // Preprocess ANSI codes, convert them to HTML and wrap with `div.language-ansi > pre.shiki`.
+  // It makes code blocks nicer.
+  // Also we make links clickable as of ANSI OSC 8 escape sequences.
+  // -- /withAnsiRender --
+  markdown: withAnsiRender({}),
 
   rewrites: {
     'en/:rest*': ':rest*'

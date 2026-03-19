@@ -22,14 +22,21 @@ h3 code {
   code {
     border: none !important;
   }
+
+  &:hover {
+    border: 1px solid transparent !important;
+    background:
+      linear-gradient(var(--vp-c-bg-alt) 80%, var(--vp-c-bg)) padding-box,
+      linear-gradient(-60deg,
+        color-mix(in srgb, var(--vp-c-brand-2) 30%, transparent) 10%,
+        color-mix(in srgb, var(--vp-c-brand-1) 30%, transparent)
+      ) border-box !important;
+  }
+
+  /* ANSI OSC8 link styles */
+  .osc8-link {
+    text-decoration: none !important;
+    border-bottom: 1px dotted currentColor !important;
+  }
 }
 
-.vp-doc div[class*="language-"]:hover {
-  border: 1px solid transparent !important;
-  background:
-    linear-gradient(var(--vp-c-bg-alt) 80%, var(--vp-c-bg)) padding-box,
-    linear-gradient(-60deg,
-      color-mix(in srgb, var(--vp-c-brand-2) 30%, transparent) 10%,
-      color-mix(in srgb, var(--vp-c-brand-1) 30%, transparent)
-    ) border-box !important;
-}

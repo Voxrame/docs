@@ -945,9 +945,9 @@ pd(player_name, position)
 ```
 <small style="color: var(--vp-c-text-2)">output:</small>
 ```ansi
-[93m@ [0m[33mmods/lord/Core/map/src/map/Corridor.lua[0m[97m:[0m[32m14[0m
-[36mplayer_name:[0m "test_player"
-[36m   position:[0m {
+\27]8;;vscode://file//full-path-to-project/mods/Voxrame/map/src/map/Corridor.lua:14\27\\\27[93m@ \27[0m\27[33mlord/mods/Voxrame/map/src/map/Corridor.lua\27[0m\27[97m:\27[0m\27[32m14\27[0m\27]8;;\27\\
+\27[36mplayer_name:\27[0m "test_player"
+\27[36m   position:\27[0m {
     x = 10,
     y = 20,
     z = 30,
@@ -966,17 +966,17 @@ pdt(player_name, position)
 ```
 <small style="color: var(--vp-c-text-2)">output:</small>
 ```ansi
-[93m@ [0m[33mmods/lord/Core/map/src/map/Corridor.lua[0m[97m:[0m[32m14[0m
-[3m[2m   1   [0m[93m@[0m [C][36m: in dofile[0m
-[3m[2m   2   [0m[93m@ [0m[33mmods/lord/Core/builtin_ext/src/mod/require.lua[0m[97m:[0m[32m29[0m[36m: in require[0m
-[3m[2m   3   [0m[93m@ [0m[33mmods/lord/Core/map/src/map.lua[0m[97m:[0m[32m9[0m[36m: in main[0m
-[3m[2m   4   [0m[93m@ [0m [C][36m: in dofile[0m
-[3m[2m   5   [0m[93m@ [0m[33mmods/lord/Core/builtin_ext/src/mod/require.lua[0m[97m:[0m[32m29[0m[36m: in require[0m
-[3m[2m   6   [0m[93m@ [0m[33mmods/lord/Core/map/init.lua[0m[97m:[0m[32m4[0m[36m: in mod_init_function[0m
-[3m[2m   7   [0m[93m@ [0m[33mmods/lord/Core/builtin_ext/src/mod.lua[0m[97m:[0m[32m80[0m[36m: in mod[0m
-[3m[2m   8   [0m[93m@ [0m[33mmods/lord/Core/map/init.lua[0m[97m:[0m[32m3[0m[36m: in main[0m
-[36mplayer_name:[0m "test_player"
-[36m   position:[0m {
+\27]8;;vscode://file//full-path-to-project/mods/Voxrame/map/src/map/Corridor.lua:14\27\\\27[93m@ \27[0m\27[33mlord/mods/Voxrame/map/src/map/Corridor.lua\27[0m\27[97m:\27[0m\27[32m14\27[0m\27]8;;\27\\
+\27[3m\27[2m   1   \27[0m\27[93m@\27[0m [C]\27[36m: in dofile\27[0m
+\27[3m\27[2m   2   \27[0m\27]8;;vscode://file//full-path-to-project/mods/Voxrame/builtin_ext/src/mod/require.lua:29\27\\\27[93m@ \27[0m\27[33mlord/mods/Voxrame/builtin_ext/src/mod/require.lua\27[0m\27[97m:\27[0m\27[32m29\27[0m\27]8;;\27\\\27[36m: in require\27[0m
+\27[3m\27[2m   3   \27[0m\27]8;;vscode://file//full-path-to-project/mods/Voxrame/map/src/map.lua:9\27\\\27[93m@ \27[0m\27[33mlord/mods/Voxrame/map/src/map.lua\27[0m\27[97m:\27[0m\27[32m9\27[0m\27]8;;\27\\\27[36m: in main\27[0m
+\27[3m\27[2m   4   \27[0m\27[93m@\27[0m [C]\27[36m: in dofile\27[0m
+\27[3m\27[2m   5   \27[0m\27]8;;vscode://file//full-path-to-project/mods/Voxrame/builtin_ext/src/mod/require.lua:29\27\\\27[93m@ \27[0m\27[33mlord/mods/Voxrame/builtin_ext/src/mod/require.lua\27[0m\27[97m:\27[0m\27[32m29\27[0m\27]8;;\27\\\27[36m: in require\27[0m
+\27[3m\27[2m   6   \27[0m\27]8;;vscode://file//full-path-to-project/mods/Voxrame/map/init.lua:4\27\\\27[93m@ \27[0m\27[33mlord/mods/Voxrame/map/init.lua\27[0m\27[97m:\27[0m\27[32m4\27[0m\27]8;;\27\\\27[36m: in mod_init_function\27[0m
+\27[3m\27[2m   7   \27[0m\27]8;;vscode://file//full-path-to-project/mods/Voxrame/builtin_ext/src/mod.lua:80\27\\\27[93m@ \27[0m\27[33mlord/mods/Voxrame/builtin_ext/src/mod.lua\27[0m\27[97m:\27[0m\27[32m80\27[0m\27]8;;\27\\\27[36m: in mod\27[0m
+\27[3m\27[2m   8   \27[0m\27]8;;vscode://file//full-path-to-project/mods/Voxrame/map/init.lua:3\27\\\27[93m@ \27[0m\27[33mlord/mods/Voxrame/map/init.lua\27[0m\27[97m:\27[0m\27[32m3\27[0m\27]8;;\27\\\27[36m: in main\27[0m
+\27[36mplayer_name:\27[0m "test_player"
+\27[36m   position:\27[0m {
     x = 10,
     y = 20,
     z = 30,
@@ -1049,32 +1049,31 @@ Tương tự như [`error()` trong Lua](https://www.lua.org/manual/5.1/manual.ht
 
 ```lua
 local player_name = nil
-errorf('Người chơi '%s' không tìm thấy', player_name)
--- Lỗi: Người chơi 'nil' không tìm thấy
+errorf('Player `%s` not found', player_name)
+-- Error: Player `nil` not found
 ```
 
 <small style="color: var(--vp-c-text-2)">output (khi `debug` được kích hoạt):</small>
 
 ```ansi
-[93m@ [0m[33mmods/lord/Core/map/src/map/Corridor.lua[0m[97m:[0m[32m9[0m
-[32m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[0m
-[1m[91mERROR:[0m
-[91m  Người chơi `nil` không tìm thấy[0m
+\27[32m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\27[0m
+\27[1m\27[91mERROR:\27[0m
+\27[91m  Player `nil` not found\27[0m
 
-[1m[91mStack trace:[0m
-[3m[2m   1   [0m[93m@[0m [C][36m: in error[0m
-[3m[2m   2   [0m[93m@ [0m[33mmods/lord/Core/helpers/src/lua_ext/global.lua[0m[97m:[0m[32m9[0m[36m: in errorf[0m
-[3m[2m   3   [0m[93m@ [0m[33mmods/lord/Core/map/src/map/Corridor.lua[0m[97m:[0m[32m12[0m[36m: in main[0m
-[3m[2m   4   [0m[93m@ [0m [C][36m: in dofile[0m
-[3m[2m   5   [0m[93m@ [0m[33mmods/lord/Core/builtin_ext/src/mod/require.lua[0m[97m:[0m[32m29[0m[36m: in require[0m
-[3m[2m   6   [0m[93m@ [0m[33mmods/lord/Core/map/src/map.lua[0m[97m:[0m[32m9[0m[36m: in main[0m
-[3m[2m   7   [0m[93m@ [0m [C][36m: in dofile[0m
-[3m[2m   8   [0m[93m@ [0m[33mmods/lord/Core/builtin_ext/src/mod/require.lua[0m[97m:[0m[32m29[0m[36m: in require[0m
-[3m[2m   9   [0m[93m@ [0m[33mmods/lord/Core/map/init.lua[0m[97m:[0m[32m4[0m[36m: in mod_init_function[0m
-[3m[2m  10   [0m[93m@ [0m[33mmods/lord/Core/builtin_ext/src/mod.lua[0m[97m:[0m[32m80[0m[36m: in mod[0m
-[3m[2m  11   [0m[93m@ [0m[33mmods/lord/Core/map/init.lua[0m[97m:[0m[32m3[0m[36m: in main[0m
+\27[1m\27[91mStack trace:\27[0m
+\27[3m\27[2m   1   \27[0m\27[93m@\27[0m [C]\27[36m: in error\27[0m
+\27[3m\27[2m   2   \27[0m\27]8;;vscode://file//full-path-to-project/mods/Voxrame/helpers/src/lua_ext/global.lua:9\27\\\27[93m@ \27[0m\27[33mlord/mods/Voxrame/helpers/src/lua_ext/global.lua\27[0m\27[97m:\27[0m\27[32m9\27[0m\27]8;;\27\\\27[36m: in errorf\27[0m
+\27[3m\27[2m   3   \27[0m\27]8;;vscode://file//full-path-to-project/mods/Voxrame/map/src/map/Corridor.lua:14\27\\\27[93m@ \27[0m\27[33mlord/mods/Voxrame/map/src/map/Corridor.lua\27[0m\27[97m:\27[0m\27[32m14\27[0m\27]8;;\27\\\27[36m: in main\27[0m
+\27[3m\27[2m   4   \27[0m\27[93m@\27[0m [C]\27[36m: in dofile\27[0m
+\27[3m\27[2m   5   \27[0m\27]8;;vscode://file//full-path-to-project/mods/Voxrame/builtin_ext/src/mod/require.lua:29\27\\\27[93m@ \27[0m\27[33mlord/mods/Voxrame/builtin_ext/src/mod/require.lua\27[0m\27[97m:\27[0m\27[32m29\27[0m\27]8;;\27\\\27[36m: in require\27[0m
+\27[3m\27[2m   6   \27[0m\27]8;;vscode://file//full-path-to-project/mods/Voxrame/map/src/map.lua:9\27\\\27[93m@ \27[0m\27[33mlord/mods/Voxrame/map/src/map.lua\27[0m\27[97m:\27[0m\27[32m9\27[0m\27]8;;\27\\\27[36m: in main\27[0m
+\27[3m\27[2m   7   \27[0m\27[93m@\27[0m [C]\27[36m: in dofile\27[0m
+\27[3m\27[2m   8   \27[0m\27]8;;vscode://file//full-path-to-project/mods/Voxrame/builtin_ext/src/mod/require.lua:29\27\\\27[93m@ \27[0m\27[33mlord/mods/Voxrame/builtin_ext/src/mod/require.lua\27[0m\27[97m:\27[0m\27[32m29\27[0m\27]8;;\27\\\27[36m: in require\27[0m
+\27[3m\27[2m   9   \27[0m\27]8;;vscode://file//full-path-to-project/mods/Voxrame/map/init.lua:4\27\\\27[93m@ \27[0m\27[33mlord/mods/Voxrame/map/init.lua\27[0m\27[97m:\27[0m\27[32m4\27[0m\27]8;;\27\\\27[36m: in mod_init_function\27[0m
+\27[3m\27[2m  10   \27[0m\27]8;;vscode://file//full-path-to-project/mods/Voxrame/builtin_ext/src/mod.lua:80\27\\\27[93m@ \27[0m\27[33mlord/mods/Voxrame/builtin_ext/src/mod.lua\27[0m\27[97m:\27[0m\27[32m80\27[0m\27]8;;\27\\\27[36m: in mod\27[0m
+\27[3m\27[2m  11   \27[0m\27]8;;vscode://file//full-path-to-project/mods/Voxrame/map/init.lua:3\27\\\27[93m@ \27[0m\27[33mlord/mods/Voxrame/map/init.lua\27[0m\27[97m:\27[0m\27[32m3\27[0m\27]8;;\27\\\27[36m: in main\27[0m
 
-[32m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[0m
+\27[32m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\27[0m
 ```
 
 ###### Xử lý lỗi trong Luanti {#error-handling-warning}
