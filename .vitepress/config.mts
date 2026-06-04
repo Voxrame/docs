@@ -2,6 +2,7 @@ import docs from '../package.json'
 
 import { defineConfig } from 'vitepress'
 import { withAnsiRender } from './plugins/ansi-renderer'
+import { lordTeamUrl } from './constants'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -48,7 +49,7 @@ export default defineConfig({
     // Footer (for other languages in their configs):
     footer: {
       message: 'Made with ❤️ for the Luanti community',
-      copyright: '© 2026 Lord Team',
+      copyright: `© 2026 <a href="${lordTeamUrl}" target="_blank">Lord Team</a>`,
     }
 
   },
